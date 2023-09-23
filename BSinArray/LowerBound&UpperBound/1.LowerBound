@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int lower_bound(int a[], int target, int n){
+    int low = 0, high = n-1, ans=n;
+    while(low < high){
+        int mid = low + ((high - low)/2);
+        if(a[mid]>=target){
+            ans = mid;
+            high = mid -1;
+        }else{
+            low = mid+1;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int arr[8]= {2,6,8,17,18, 29, 76, 91};
+    int ans= lower_bound(arr,92,8);
+    cout << ans << " " << arr[ans];
+
+    return 0;
+}
