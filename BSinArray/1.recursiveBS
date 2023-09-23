@@ -8,6 +8,7 @@ public:
     int bs(vector<int>& a, int low, int high, int target){
         if(low>high) return -1;
         int mid = (low+high)/2;
+        //Sometimes overflow can happen when sizeof(arr) is INT_MAX, to avoid that use [mid = low + ((high-low)/2);]
         if(a[mid]==target) return mid;
         else if(a[mid]> target) return bs(a,low, mid-1, target);
         else return bs(a, mid+1, high, target);
