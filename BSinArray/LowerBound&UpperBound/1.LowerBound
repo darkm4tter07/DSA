@@ -3,7 +3,7 @@ using namespace std;
 
 int lower_bound(int a[], int target, int n){
     int low = 0, high = n-1, ans=n;
-    while(low < high){
+    while(low <= high){
         int mid = low + ((high - low)/2);
         if(a[mid]>=target){
             ans = mid;
