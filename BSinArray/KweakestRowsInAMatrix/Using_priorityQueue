@@ -1,0 +1,35 @@
+class Solution {
+public:
+    typedef pair<int,int> P;
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        //O(m(log(n)+log(k)))+O(k)
+        priority_queue<pair<int,int>>pq;
+        for(int i=0;i<mat.size();i++){
+            int sum=search(mat[i])+1;
+            pq.push({sum, i});
+            //This will arrange in ascending order inside a heap and takes log(k) time
+            if(pq.size()>k){
+                pq.pop();
+            }
+        }
+        vector<int>v(k);
+        for(int i=k-1;i>=0;i--){
+            P temp=pq.top();
+            pq.pop();
+            v[i]=temp.second;
+        }
+        return v;
+    }
+    int search(vector<int>v){
+        int low =0, high=v.size()-1,mid;
+        while(low<=high){
+            mid=(low+high)/2;
+            if(v[mid]==0){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+};
