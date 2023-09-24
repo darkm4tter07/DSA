@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        //Brute force;
+        multimap<int,int>mp;
+        for(int i=0;i<mat.size();i++){
+            int sum=search(mat[i])+1;
+            mp.insert(pair<int, int>(sum, i));
+        }
+        vector<int>v;
+        int j=0;
+        for(auto it: mp){
+            v.push_back(it.second);
+            j++;
+            if(j==k){
+                break;
+            }
+        }
+        return v;
+    }
+    int search(vector<int>v){
+        int low =0, high=v.size()-1,mid;
+        while(low<=high){
+            mid=(low+high)/2;
+            if(v[mid]==0){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+};
