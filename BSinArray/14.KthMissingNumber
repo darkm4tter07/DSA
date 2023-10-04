@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        //Brute Force;
+        /*for(int i=0;i<arr.size();i++){
+            if(arr[i]>k){
+                return k;
+            }else{
+                k++;
+            }
+        }
+        return k;*/
+        //Binary Search
+        int low = 0, high = arr.size()-1;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            //0 1 2 3 4 = indices
+            //2 3 4 7 11 = array
+            //1 1 1 3 6 = missing numbers
+            
+            if(arr[mid]-mid -1<k){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+        return k + low;
+    }
+};
