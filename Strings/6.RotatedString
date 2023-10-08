@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        if(s.length()!=goal.length()){
+            return false;
+        }
+        //abcde = eabcd
+        for(int i = 0; i<s.length();i++){
+            if(s==goal) return true;
+            char a = s[s.length()-1];
+            s.pop_back();
+            s = a + s;
+        }
+        return false;
+    }
+};
