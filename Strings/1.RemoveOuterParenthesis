@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        int cnt = 1;
+        
+        string ans = "";
+        for(int i=1;i<s.size();i++){
+            //(()()) (())
+            if(s[i]=='('){
+                cnt ++;
+            }else if (s[i]==')'){
+                cnt--;
+            }
+            if(cnt!=0){
+                ans += s[i];
+            }else{
+                i++;
+                cnt = 1;
+            }
+        }
+        return ans;
+    }
+};
+
+https://leetcode.com/problems/remove-outermost-parentheses/
