@@ -1,0 +1,52 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        
+        int i=0;
+        int sign=1;
+        string k="0";
+        //skip all the blank spaces;
+        while(s[i]==' '){
+            i++;
+        }
+        //check the sign if exists
+        if(s[i]=='-' || s[i]=='+'){
+           if(s[i]=='-'){
+               sign=sign*-1;
+               i++;
+           }else{
+               i++;
+           }
+        }
+        //skip all the zeroes
+        while(s[i]=='0'){
+            i++;
+        }
+        
+        long long ans = 0;
+        for(int j=i;s[i]>=48 && s[i]<=57;i++){
+            ans = ans*10 + int(s[i]-'0');
+            if(ans>INT_MAX){
+                break;
+            }
+        }
+        
+
+        if(sign==-1){
+            if(INT_MIN>sign*ans){
+                return INT_MIN;
+            }else{
+                return sign*ans;
+            }
+        }else{
+            if(INT_MAX<ans){
+                return INT_MAX;
+            }else{
+                return ans;
+            }
+        }
+
+
+
+    }
+};
