@@ -1,0 +1,22 @@
+class Node{
+public:
+     int data;
+     Node* next;
+}
+
+Node* constructLL(vector<int>& arr) {
+    Node* head;
+    Node* temp = new Node();
+    int n = arr.size();
+    for(int i=0; i<n;i++){
+        Node* temp2 =new Node();
+        temp2->data = arr[i];
+        temp2->next = nullptr;
+        temp->next = temp2;
+        temp = temp->next;
+        if(i==0){
+            head = temp;
+        }
+    }
+    return head;
+}
