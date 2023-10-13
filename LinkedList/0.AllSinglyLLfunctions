@@ -1,0 +1,188 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class node{
+public:
+	int data;
+	struct node *link;
+	node(){
+		this->data = 0;
+		this->link = nullptr;
+	}
+
+	node(int val){
+		this->data = val;
+		this->link = nullptr;
+	}
+	node(int val, node* next){
+		this->data = val;
+		this->link = next;
+	}
+};
+
+void count(node* head){
+	int count=0;
+	if(head==NULL){
+		printf("Linked List is empty\n");
+	}
+	node* ptr= NULL;
+	ptr=head;
+	while(ptr!=NULL){
+		count++;
+		ptr=ptr->link;
+	}
+	cout << count << endl;
+}
+
+void append(node *head, int n){
+	
+	node *p;
+	p=head;
+	while(p->link!=NULL){
+		p=p->link;
+	}
+	p->link=new node();
+	p->link->data=n;
+	p->link->link=NULL;
+	
+}
+
+void display (node *p){
+	if(p==NULL){
+		cout << "Linked List is empty";
+	}
+	while(p!=NULL){
+		cout << p->data << " ";
+		p=p->link;
+	}
+	cout << endl;
+	
+}
+
+void insertfirst (node **head, int n){
+	node *new_node = new node();
+	new_node->data=n;
+	new_node->link=*head;
+	*head=new_node;
+}
+
+void insert(node *head, int n, int data){
+	node *temp= new node();
+	temp->data=data;
+	node *ptr=head;
+	n--;
+	while(n>1){
+		ptr=ptr->link;
+		n--;
+	}
+	temp->link=ptr->link;
+	ptr->link=temp;
+	
+	
+}
+
+void del_first(node **head){
+	node *temp=*head;
+	*head=(*head)->link;
+	delete temp;
+	temp=NULL;
+}
+
+void del_last(node *head){
+	node *temp=head;
+	while(temp->link->link!=NULL){
+		temp=temp->link;
+	}
+	delete temp->link;
+	temp->link=NULL;
+}
+
+void deleteAtInd(node **head, int n){
+	node* temp=*head;
+	if(n==1){
+		*head=(*head)->link;
+		free(temp);
+		temp=NULL;
+		return;
+	}
+	while(n>2){
+		temp=temp->link;
+		n--;
+	}
+	node* del= temp->link;
+	temp->link=temp->link->link;
+	delete del;
+	del->link=NULL;
+}
+
+void delete_all(node **head){
+	while((*head)!=NULL){
+		node *temp=*head;
+		*head=(*head)->link;
+		free(temp);
+		temp->link=NULL;
+	}
+	cout << "Linked List Deleted";
+}
+
+void reverse(node **head){
+	
+	node *prev= *head;
+	*head=(*head)->link;
+	node *next=(*head)->link;
+	(*head)->link=prev;
+	prev->link=NULL;
+	while(next!=NULL){
+		 prev= *head;
+		 *head=next;
+		 next=(*head)->link;
+		 (*head)->link=prev;
+	 }	 
+}
+
+
+
+
+int main(){
+	node *head= new node();
+	head->data=45;
+	head->link=NULL;
+	node *current= new node();
+	current->data=90;
+	current->link=NULL;
+	head->link=current;
+	
+	//Now first node is connected to second node and if we want to add one more node
+	
+	current=new node();
+	current->data=135;
+	current->link=NULL;
+	head->link->link=current;
+	
+	count(head);
+	display(head);
+	append(head,180);
+	display(head);
+	insertfirst(&head,16);
+	display(head);
+	
+	//In append function we didn't used double pointer whereas in insertfirst we used double pointer because we are not updating any preeviously defined pointer in appending but while in insertfirst we are modifying head pointer
+	
+	insert(head,4,18);
+	display(head);
+	
+	reverse(&head);
+	display(head);
+	
+	del_first(&head);
+	display(head);
+	
+	del_last(head);
+	display(head);
+	
+	deleteAtInd(&head,1);
+	display(head);
+	
+	//delete_all(&head);
+	//display(head);	
+}
