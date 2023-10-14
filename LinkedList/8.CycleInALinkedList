@@ -1,0 +1,45 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    //Brute force
+    bool hasCycle(ListNode *head) {
+        unordered_map<ListNode *,int>mp;
+        ListNode* temp = head;
+        while(temp!=NULL){
+            if(mp.find(temp)!=mp.end()){
+                return true;
+            }
+            mp[temp]++;
+            temp = temp->next;
+        }
+        return false;
+    }
+};
+
+//Using fast and slow pointer;
+//Where fast pointer takes 2 steps while slow pointer takes 1 step in each iteration, it is sure that they meet at some point if there exist a cycle or loop breaks if tehre exists null pointer
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL || head->next==NULL){
+            return false;
+        }
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while(fast->next && fast->next->next){
+            fast = fast->next->next;
+            slow = slow->next;
+            if(fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
+};
