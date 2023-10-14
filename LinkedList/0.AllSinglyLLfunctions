@@ -127,17 +127,15 @@ void delete_all(node **head){
 
 void reverse(node **head){
 	
-	node *prev= *head;
-	*head=(*head)->link;
-	node *next=(*head)->link;
-	(*head)->link=prev;
-	prev->link=NULL;
+	node *prev= NULL;
+	node *next=(*head);
 	while(next!=NULL){
-		 prev= *head;
-		 *head=next;
-		 next=(*head)->link;
-		 (*head)->link=prev;
-	 }	 
+		next=(*head)->link;
+		(*head)->link = prev;
+		prev = *head;
+		*head = next;
+	}	
+	*head = prev;
 }
 
 
