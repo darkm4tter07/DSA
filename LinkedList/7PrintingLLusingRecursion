@@ -1,0 +1,17 @@
+void print(node* p){
+  if(p==NULL){
+    return;
+  }
+  cout << p->data <<" ";
+  print(p->next);
+  //This is tail recursion where recursive call is the last statement that is executed by the function
+}
+
+void reversePrint(node* p){
+  if(p==NULL){
+    return;
+  }
+  reversePrint(p->next);
+  cout << p->data << " ";
+  //This is Head recursion where recursive call is the first statement inside the given condition, so every other line after recursive call is compiled in returning time of function
+}
