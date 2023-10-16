@@ -1,0 +1,33 @@
+/*
+Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+
+There is only one repeated number in nums, return this repeated number.
+We will use floyd's cycle detection algorithm
+*/
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        // int n = nums.size()-1;
+        // long long sum = n*(n+1);
+        // sum = sum/2;
+        // for(int i=0;i<nums.size();i++){
+        //     sum = sum - nums[i];
+        // }
+        // return -sum;
+        int slow=0, fast=0;
+        while(true){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            if(slow==fast){
+                fast = 0;
+                while(slow!=fast){
+                    slow = nums[slow];
+                    fast = nums[fast];
+                }
+                return slow;
+            }
+        }
+        return -1;
+    }
+};
