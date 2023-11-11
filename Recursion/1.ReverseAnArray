@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void rev(vector<int>&arr, int low){
+	if(low>=arr.size()-low-1){
+		return;
+	}
+	swap(arr[low],arr[arr.size()-low-1]);
+	rev(arr, low+1);
+}
+
+int main(){
+	vector<int> arr= {1,2,3,4,5,6};
+	for(int x: arr){
+		cout << x << " ";
+	}
+	cout << endl;
+	rev(arr,0);
+	
+	for(int x: arr){
+		cout << x << " ";
+	}
+}
