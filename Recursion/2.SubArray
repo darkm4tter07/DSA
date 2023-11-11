@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void print(vector<int>& arr){
+	for(int x: arr){
+		cout << x << " ";
+	}
+	cout << endl;
+}
+
+//TC: O(N*2^N)
+//SC: O(N)
+
+void subarray(vector<int>&arr, int n, vector<int>&empty){
+	if(n>=arr.size()){
+		print(empty);
+		return;
+	}
+	//picking up any index and generating subsequence from it
+	empty.push_back(arr[n]);
+	subarray(arr,n+1,empty);
+	//dropping a particular index and generating further subsequence from it
+	empty.pop_back();
+	subarray(arr, n+1,empty);
+}
+
+
+
+int main(){
+	vector<int>arr = {1,2,3,4};
+	vector<int> empty;
+	subarray(arr,0,empty);
+}
