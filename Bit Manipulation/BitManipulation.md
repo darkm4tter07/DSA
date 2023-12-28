@@ -36,13 +36,15 @@ int num = 10, count = 0;
 while(num>0){
 		count += num & 1;
 		num = num >> 1;
-}```
-Or we can use built in functions for that.
-`__builtin_popcount(num); //For integers only`
-`__builtin_popcountll(num); //For long integers`
+}
+//Or we can use built in functions for that.
+__builtin_popcount(num); //For integers only
+__builtin_popcountll(num); //For long integers
+```
 
-10. To convert an uppercase character to lowercase:
-	```cpp
+
+10.To convert an uppercase character to lowercase:
+```cpp
 A = 65 = 1000001
 a = 97 = 1100001
 a = A | (1<<5);
