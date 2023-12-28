@@ -36,15 +36,12 @@ int num = 10, count = 0;
 while(num>0){
 		count += num & 1;
 		num = num >> 1;
-}
-//Or we can use built in functions for that.
-__builtin_popcount(num); //For integers only
-__builtin_popcountll(num); //For long integers
-```
-
-
-10.To convert an uppercase character to lowercase:
-```cpp
+}```
+Or we can use built in functions for that.
+`__builtin_popcount(num); //For integers only`
+`__builtin_popcountll(num); //For long integers`
+10. To convert an uppercase character to lowercase:
+	```cpp
 A = 65 = 1000001
 a = 97 = 1100001
 a = A | (1<<5);
@@ -54,3 +51,12 @@ A = a & ~(1<<5);
 //or
 A = a & '_';  // '_ represents 31 in binary```
 Only the 5th bit is set in the case of lowercase characters.
+
+##### Some Additional Problems:
+- [Divide Two Integers](http://https://leetcode.com/problems/divide-two-integers/description/ "Divide Two Integers")
+- [Minimum Bit Flips to Convert Number](https://leetcode.com/problems/minimum-bit-flips-to-convert-number/description/)
+- [Counting Bits](https://leetcode.com/problems/counting-bits/description/)
+- [Single Number](https://leetcode.com/problems/single-number/description/)
+- [Power Set or Subsets](https://leetcode.com/problems/subsets/description/)
+- [Gray Code](https://leetcode.com/problems/gray-code/description/)
+- [Single Number II](https://leetcode.com/problems/single-number-ii/description/)
