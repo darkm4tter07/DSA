@@ -49,8 +49,10 @@ a = A | (1<<5);
 a = A | ' '; // Blank space represents 32 in binary
 A = a & ~(1<<5);
 //or
-A = a & '_';  // '_ represents 31 in binary```
-Only the 5th bit is set in the case of lowercase characters.
+A = a & '_';  // '_ represents 31 in binary
+//Only the 5th bit is set in the case of lowercase characters.
+```
+
 
 ##### Some Additional Problems:
 - [Divide Two Integers](http://https://leetcode.com/problems/divide-two-integers/description/ "Divide Two Integers")
