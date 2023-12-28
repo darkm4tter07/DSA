@@ -55,7 +55,7 @@ A = a & '_';  // '_ represents 31 in binary
 
 
 ##### Some Additional Problems:
-- [Divide Two Integers](http://https://leetcode.com/problems/divide-two-integers/description/ "Divide Two Integers")
+- [Divide Two Integers](https://leetcode.com/problems/divide-two-integers/description/ "Divide Two Integers")
 - [Minimum Bit Flips to Convert Number](https://leetcode.com/problems/minimum-bit-flips-to-convert-number/description/)
 - [Counting Bits](https://leetcode.com/problems/counting-bits/description/)
 - [Single Number](https://leetcode.com/problems/single-number/description/)
